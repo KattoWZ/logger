@@ -1,0 +1,40 @@
+===============================
+           CEMP LOGS           
+===============================
+[Date of Creation] : 2025-06-30 17:08:07
+[Author] : DR
+
+------------------------------
+[2025-06-30 17:09:01]
+[Task] :Deploy summary template 
+[Status] :Finish 
+[Progress] :[██████████] 100% 
+[Detail] :Backdate log, 1 week from this log 
+
+------------------------------
+[2025-06-30 17:09:32]
+[Task] :Summary progress 
+[Status] :On Progress 
+[Progress] :[██........] 25% 
+[Detail] :Backdate log, 1 week from this log 
+
+------------------------------
+[2025-07-01 08:16:58]
+[Task] :Summary 
+[Status] :On Progress 
+[Progress] :[███.......] 30% 
+[Detail] : 
+
+------------------------------
+[2025-07-01 09:31:49]
+[Task] :Summary 
+[Status] :On Progress 
+[Progress] :[█████.....] 50% 
+[Detail] : 
+
+------------------------------
+[2025-07-01 11:06:47]
+[Task] :Summary 
+[Status] :Finish 
+[Progress] :[██████████] 100% 
+[Detail] : 

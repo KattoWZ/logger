@@ -1,0 +1,16 @@
+# def print_title(title, width=31, char="="):
+#     print(char * width)
+#     print(f"\033[1;36m{title.center(width)}\033[0m")  # Cyan + bold title
+#     print(char * width)
+
+def print_title(title, width=31, char="="):
+    styled = char * width + "\n"
+    styled += f"\033[1;36m{title.center(width)}\033[0m\n"
+    styled += char * width
+
+    plain = char * width + "\n"
+    plain += title.center(width) + "\n"
+    plain += char * width
+
+    print(styled)
+    return plain

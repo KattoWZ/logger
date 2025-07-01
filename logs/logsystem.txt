@@ -1,0 +1,80 @@
+=======PYTHON LOG SYSTEM=======
+[Date of Creation] : 2025-06-30 09:56:14
+[Author] : DR
+
+------------------------------
+[2025-06-30 09:57:43]
+[Task] :Adding check same file name before creating new file 
+[Status] :Finish 
+[Progress] :[██████████] 100% 
+[Detail] : 
+
+------------------------------
+[2025-06-30 09:58:23]
+[Task] :Adding Delete log file feature 
+[Status] :Finish 
+[Progress] :[██████████] 100% 
+[Detail] :v.1.1 
+
+------------------------------
+[2025-06-30 10:00:18]
+[Task] :Add "cancel" progress status 
+[Status] :Plan 
+[Progress] :[..........] 0% 
+[Detail] : 
+
+------------------------------
+[2025-06-30 10:12:37]
+[Task] :Adding 'Cancel' status for log and progress status 
+[Status] :Finish 
+[Progress] :[██████████] 100% 
+[Detail] : 
+
+------------------------------
+[2025-06-30 10:38:30]
+[Task] :Creating utils.py for utility 
+[Status] :Finish 
+[Progress] :[██████████] 100% 
+[Detail] : 
+
+------------------------------
+[2025-06-30 10:39:11]
+[Task] :Using utils.py to give title or section title more beautiful color and design 
+[Status] :Finish 
+[Progress] :[██████████] 100% 
+[Detail] :v.1.1.2 
+
+------------------------------
+[2025-06-30 11:25:50]
+[Task] :Adding small feauture to automatically creating the 'log' dir when it's not exist 
+[Status] :Finish 
+[Progress] :[██████████] 100% 
+[Detail] :v.1.1.3 
+
+------------------------------
+[2025-06-30 11:26:44]
+[Task] :Seperate all of the function into individual files (no longer alpha version) 
+[Status] :Plan 
+[Progress] :[..........] 0% 
+[Detail] :alpha -> Beta-Release 
+
+------------------------------
+[2025-06-30 11:34:26]
+[Task] :Seperate function into files 
+[Status] :On Progress 
+[Progress] :[█.........] 10% 
+[Detail] : 
+
+------------------------------
+[2025-06-30 16:34:59]
+[Task] :Seperate all function into individual file 
+[Status] :Finish 
+[Progress] :[██████████] 100% 
+[Detail] :v.1-Beta 
+
+------------------------------
+[2025-07-01 08:22:57]
+[Task] :Push to private git repo 
+[Status] :Plan 
+[Progress] :[..........] 0% 
+[Detail] :Don't forget about which file or dir to be included in gitignore 
