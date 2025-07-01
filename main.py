@@ -3,6 +3,7 @@ from update import update_log as up
 from lists import list_log as ll
 from delete import delete as dl
 from quit  import quit_program as qp
+from export_excell import export_to_excel as ex
 from config import log_dir, ri, pt, datetime
 import os
 
@@ -14,6 +15,7 @@ def main():
                 "u" : up,
                 "l" : ll,
                 "q" : qp,
+                "e" : ex,
                 "d" : dl
             }
         
@@ -23,6 +25,7 @@ def main():
                 print("\n (N) Create New Log")
                 print(" (U) Update Exisiting Log")
                 print(" (L) Show List Existing Logs")
+                print(" (E) Export to excel[WIP_don't use]")
                 print(" (D) Delete files")
                 print(" (Q) Quit")
             

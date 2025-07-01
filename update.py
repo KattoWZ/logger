@@ -1,10 +1,11 @@
 from config import log_dir, ri, pt, datetime
+import uuid
 import os
 
 #updating existing log file
 def update_log():
     pt("Log Updater")
-    
+    entry_id = str(uuid.uuid4())
     doc = ri("Input log file name: ").strip().lower()
     filepath = os.path.join(log_dir, f"{doc}.txt")
 
@@ -59,6 +60,7 @@ def update_log():
         log_entry = (
             "\n------------------------------\n"
             f"[{timestamp}]\n"
+            f"[ID] :{entry_id}\n"
             f"[Task] :{task} \n"
             f"[Status] :{status_text} \n"
             f"[Progress] :{progress_bar} \n"
