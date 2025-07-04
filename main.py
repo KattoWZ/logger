@@ -7,6 +7,7 @@ from export_excell import export_to_excel as ex
 from edit import edit_log as ed
 from config import log_dir, ri, pt, datetime, rm
 from utils.uxHelper import clear_screen as clss
+from entryList import list_entries as le
 import time
 import os
 
@@ -19,7 +20,8 @@ def main():
         "q" : qp,
         "x" : ex,
         "d" : dl,
-        "e" : ed
+        "e" : ed,
+        "le": le
     }
         
     while True:
@@ -34,6 +36,7 @@ def main():
             print(" (X) Export to excel[WIP_don't use]")
             print(" (D) Delete files")
             print(" (Q) Quit")
+            print(" (LE) lists entries")
         
             choice = input("> ").strip().lower()
             action = menu_actions.get(choice)
