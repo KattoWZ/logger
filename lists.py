@@ -1,8 +1,10 @@
+from utils.uxHelper import clear_screen as clss, pause
 from config import  log_dir, ri, pt
 import os
 
 #listing existing log file
 def list_log():
+    clss()
     pt("Log List")
     if not os.path.exists(log_dir): #check if the log/ dir is exist, and create the dir if missing or not exist
         os.makedirs(log_dir)
@@ -14,6 +16,7 @@ def list_log():
         print("Available log files: ")
         for f in files:
             print(f" - {f}")
+        pause()
             # print("\n")
     else:
         print("No log files found yet. \n")
