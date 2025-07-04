@@ -3,7 +3,6 @@ from utils.titleUI import print_title as pt
 from datetime import datetime
 from pathlib import Path
 import os
-
 #Function to scan the root folder if the default path is not met
 def find_project_root(marker="main.py"):
     current = Path(__file__).resolve().parent
