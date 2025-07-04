@@ -46,7 +46,7 @@ def main():
             continue
         
         except KeyboardInterrupt:
-            print("\n Log cancelled. No changes made.")
-            
+            print("\n Exit program, exited by user. No changes made.")
+            break
 if __name__ == "__main__":
     main()
