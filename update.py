@@ -1,4 +1,5 @@
 from config import log_dir, ri, pt, datetime
+from utils.uxHelper import pause_and_clear as psc
 import uuid
 import os
 
@@ -13,6 +14,7 @@ def update_log():
     if not os.path.exists(filepath):
         print(f"Log file '{doc}.txt' not found in '{log_dir}/' directory")
         print("Please create the log file first before updating.")
+        psc()
         return #Don't continue, just exit the function
     print(f"Log file found! Now updating '{doc}.txt'...")
 

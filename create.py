@@ -1,4 +1,4 @@
-from config import  log_dir, ri, pt, datetime
+from config import  log_dir, ri, pt, datetime,rm
 import os
 
 #creating a log file
