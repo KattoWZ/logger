@@ -8,7 +8,7 @@ def update_log():
     pt("Log Updater")
     entry_id = str(uuid.uuid4())
     doc = ri("Input log file name: ").strip().lower()
-    filepath = os.path.join(log_dir, f"{doc}.txt")
+    filepath = log_dir /  f"{doc}.txt"
 
     #check if file exists
     if not os.path.exists(filepath):

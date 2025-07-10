@@ -6,9 +6,9 @@ def create_log():
     pt("Create Log")
     while True:
         doc = ri("Input file name to generate (without .txt): ").lower()
-        filepath = os.path.join(log_dir, f"{doc}.txt")
+        filepath = log_dir / f"{doc}.txt"
 
-        if os.path.exists(filepath):
+        if os.path.exists(filepath): #change this to use pathlib later
             print("The log file is already exists, Try a different name.")
         else:
             break #no same file name, proceed to create new file
