@@ -1,12 +1,12 @@
 from config import  log_dir, ri, pt
-import os
+from pathlib import Path
 
 #Delete Program
 def delete():
     pt("Purge the FILE")
     doc = ri("Insert the name of the file to be removed: ").strip().lower()
-    filepath = os.path.join(log_dir,f"{doc}.txt")
-    if os.path.exists(filepath):
+    filepath = log_dir / f"{doc}.txt"
+    if filepath.exists():
         print("\n===============================")
         print(f"Log file '{doc}.txt' is FOUND")
         print("===============================")
@@ -17,7 +17,7 @@ def delete():
         return #exit the funtion to let user to check the lists
     delConfirmation = ri(f"Are you sure to remove the {doc}.txt file? (Y/N): ").strip().lower()
     if delConfirmation == 'y':
-        os.remove(filepath)
+        filepath.unlink()
         print("\n===============================")
         print(f"'{doc}.txt' has been removed")
         print("===============================")

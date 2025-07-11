@@ -1,12 +1,12 @@
-import os
+from pathlib import Path
 import re
 from config import log_dir,ri
 
 def list_entries():
     filename = ri("Input:")
-    log_path = os.path.join(log_dir, f"{filename}.txt")
+    log_path = log_dir / f"{filename}.txt"
 
-    if not os.path.exists(log_path):
+    if not log_path.exists():
         print(f"❌ File '{filename}.txt' not found.")
         return []
 
