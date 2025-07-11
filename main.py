@@ -12,7 +12,8 @@ import time
 import os
 
 def main():
-    os.makedirs(log_dir, exist_ok=True)
+    # os.makedirs(log_dir, exist_ok=True)
+    Path(log_dir).mkdir(parents=True, exist_ok=True)
     menu_actions = {
         "n" : cr,
         "u" : up,
