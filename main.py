@@ -8,8 +8,8 @@ from edit import edit_log as ed
 from config import log_dir, ri, pt, datetime, rm
 from utils.uxHelper import clear_screen as clss
 from entryList import list_entries as le
+from pathlib import Path
 import time
-import os
 
 def main():
     # os.makedirs(log_dir, exist_ok=True)

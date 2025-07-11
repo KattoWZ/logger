@@ -5,7 +5,7 @@ from pathlib import Path
 def delete():
     pt("Purge the FILE")
     doc = ri("Insert the name of the file to be removed: ").strip().lower()
-    filepath = log_dir / f"{doc}.txt")
+    filepath = log_dir / f"{doc}.txt"
     if filepath.exists():
         print("\n===============================")
         print(f"Log file '{doc}.txt' is FOUND")

@@ -7,7 +7,7 @@ from utils.inputValidator import reqInput as ri
 
 def export_to_excel():
     filename = ri("Input the file you want to export to excel: ").strip().lower()
-    log_path = log_dir / f"{filename}.txt")
+    log_path = log_dir / f"{filename}.txt"
     
     if not log_path.exists():
         print(f"File '{filename}.txt' not found in logs.")
@@ -61,6 +61,6 @@ def export_to_excel():
         ])
 
     # Save Excel
-    excel_path = log_dir / f"{filename}.xlsx")
+    excel_path = log_dir / f"{filename}.xlsx"
     wb.save(excel_path)
     print(f"Excel file saved as '{filename}.xlsx' in logs.")

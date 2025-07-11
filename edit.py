@@ -8,7 +8,7 @@ def edit_log():
 
     # Step 1: Ask user which file to edit
     filename = input("Which log file do you want to edit (without .txt)? ").strip().lower()
-    filepath = log_dir / f"{filename}.txt") #change this to use pathlib later
+    filepath = log_dir / f"{filename}.txt" #change this to use pathlib later
 
     if not os.path.exists(filepath):
         print("File not found.")

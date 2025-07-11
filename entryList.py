@@ -4,7 +4,7 @@ from config import log_dir,ri
 
 def list_entries():
     filename = ri("Input:")
-    log_path = log_dir / f"{filename}.txt")
+    log_path = log_dir / f"{filename}.txt"
 
     if not log_path.exists():
         print(f"❌ File '{filename}.txt' not found.")
