@@ -6,6 +6,7 @@ import os
 def create_log():
     pt("Create Log")
     while True:
+        print("Insert '!' to return to main menu")            
         doc = ri("Input file name to generate (without .txt): ").lower()
         filepath = log_dir / f"{doc}.txt"
 

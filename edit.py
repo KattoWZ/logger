@@ -4,6 +4,7 @@ from config import log_dir
 from utils.titleUI import print_title as pt
 
 def edit_log():
+    print("Insert '!' to return to main menu")
     pt("EDIT LOG ENTRY")
 
     # Step 1: Ask user which file to edit
