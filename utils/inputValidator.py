@@ -1,5 +1,6 @@
 import time
 from utils.uxHelper import clear_screen as clss
+
 class ReturnToMenu(Exception):
     pass
 def reqInput(prompt):
@@ -7,7 +8,7 @@ def reqInput(prompt):
         value = input(prompt).strip()
         if value == "!":
             print("Returning to main menu.\n")
-            time.sleep(1)
+            time.sleep(0.5)
             clss()
             raise ReturnToMenu
         if value:

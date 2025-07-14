@@ -6,6 +6,7 @@ from config import log_dir
 from utils.inputValidator import reqInput as ri
 
 def export_to_excel():
+    print("Insert '!' to return to main menu")            
     filename = ri("Input the file you want to export to excel: ").strip().lower()
     log_path = log_dir / f"{filename}.txt"
     

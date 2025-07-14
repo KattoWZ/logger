@@ -3,6 +3,7 @@ from pathlib import Path
 
 #Delete Program
 def delete():
+    print("Insert '!' to return to main menu")            
     pt("Purge the FILE")
     doc = ri("Insert the name of the file to be removed: ").strip().lower()
     filepath = log_dir / f"{doc}.txt"

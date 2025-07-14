@@ -5,6 +5,7 @@ from pathlib import Path
 
 #updating existing log file
 def update_log():
+    print("Insert '!' to return to main menu")            
     pt("Log Updater")
     entry_id = str(uuid.uuid4())
     doc = ri("Input log file name: ").strip().lower()
