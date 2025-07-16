@@ -1,13 +1,13 @@
-from create import create_log as cr
-from update import update_log as up
-from lists import list_log as ll
-from delete import delete as dl
-from quit  import quit_program as qp
-from export_excell import export_to_excel as ex
-from edit import edit_log as ed
-from config import log_dir, ri, pt, datetime, rm
+from core.create import create_log as cr
+from core.update import update_log as up
+from core.lists import list_log as ll
+from core.delete import delete as dl
+from core.quit  import quit_program as qp
+from core.export2excell import export_to_excel as ex
+from core.edit import edit_log as ed
+from core.entryList import list_entries as le
 from utils.uxHelper import clear_screen as clss
-from entryList import list_entries as le
+from config import log_dir, ri, pt, datetime, rm
 from pathlib import Path
 import time
 
