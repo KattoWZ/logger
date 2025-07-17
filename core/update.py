@@ -7,7 +7,6 @@ from pathlib import Path
 def update_log():
     print("Insert '!' to return to main menu")            
     pt("Log Updater")
-    entry_id = str(uuid.uuid4())
     doc = ri("Input log file name: ").strip().lower()
     filepath = log_dir /  f"{doc}.txt"
 
@@ -21,7 +20,7 @@ def update_log():
 
     while True:
         print("\n----- Adding new entry ------")
-
+        entry_id = str(uuid.uuid4())
         task = ri("Input task: ")
         status = ri("Input Status (O:On Progress, F: Finish, P: Plan, C: Canceled): ").lower()
         #intrepet the progress based on status options

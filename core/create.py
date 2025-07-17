@@ -23,6 +23,7 @@ def create_log():
         pt(f"{name.upper()} LOGS") + "\n" +
         f"[Date of Creation] : {timestamp}\n"
         f"[Author] : {author.upper()}\n"
+        f"\n>>> LOG ENTRY <<<\n"
         
     )
 

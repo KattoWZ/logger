@@ -1,6 +1,7 @@
 from pathlib import Path
 import re #to enable the program to search or extract from files
-from config import log_dir
+from config import log_dir,ri
+from pathlib import Path
 from utils.titleUI import print_title as pt
 
 def edit_log():
@@ -8,10 +9,10 @@ def edit_log():
     pt("EDIT LOG ENTRY")
 
     # Step 1: Ask user which file to edit
-    filename = input("Which log file do you want to edit (without .txt)? ").strip().lower()
+    filename = ri("Which log file do you want to edit (without .txt)? ").strip().lower()
     filepath = log_dir / f"{filename}.txt" #change this to use pathlib later
 
-    if not os.path.exists(filepath):
+    if not filepath.exists():
         print("File not found.")
         return
 
