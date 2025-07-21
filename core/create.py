@@ -1,4 +1,4 @@
-from config import  log_dir, ri, pt, datetime,rm
+from config import  log_dir, ri, pt,lt,datetime,rm
 from pathlib import Path
 import os
 
@@ -20,7 +20,7 @@ def create_log():
     timestamp = datetime.now().replace(microsecond=0)
 
     log_entry = (
-        pt(f"{name.upper()} LOGS") + "\n" +
+        lt(f"{name.upper()} LOGS") + "\n" +
         f"[Date of Creation] : {timestamp}\n"
         f"[Author] : {author.upper()}\n"
         f"\n>>> LOG ENTRY <<<\n"

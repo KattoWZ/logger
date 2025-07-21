@@ -1,3 +1,4 @@
+from debug import debugEntry as debug
 from utils.uxHelper import clear_screen as clss, pause
 from pathlib import Path
 import re
@@ -20,8 +21,8 @@ def list_entries():
     entries = [e for e in content.split("---") if e.strip()]
     if not "\[ID\]" in entries[0] and not "[Task]" in entries[0]:
         entries = entries[1:]
-        
-    print("\n🐛 DEBUG: Found", len(entries), "entry chunks\n")
+    clss()   
+    print("\n🐛 DEBUG: Found", len(entries), f"entry chunks from {filename}.txt\n")
 
     tasks = []
     for i, entry in enumerate(entries):
@@ -31,7 +32,7 @@ def list_entries():
 
         print(f"\n📦 Entry #{i + 1} content:\n{entry}\n")
 
-
+        
         task_match = re.search(r"\[Task\]\s*:\s*(.+)", entry)
         id_match = re.search(r"\[ID\]\s*:\s*([a-f0-9\-]+)", entry) #that \[ and \] might looks like empty box in other IDE or platform
         
@@ -44,24 +45,14 @@ def list_entries():
             print("⚠️ Task or ID not found in this entry.")
 
     if tasks:
-        print("\n📝 Available Log Entries:\n")
+        print(f"\n📝 Available Log Entries from {filename}.txt:\n")
         for i, task, uid in tasks:
             print(f"{i+1}. Task: {task} | ID: {uid}")
         
     else:
         print("⚠️ No valid entries found.")
 
-    # print(f"[DEBUG] Raw entry:\n{entry}")
-    # print(f"[DEBUG] Extracted → Task: {task}, ID: {uid}")
-
-    # print(f"\nIndex i = {i}, Entry #{i + 1}\n")
-
-    # for i, entry in enumerate(entries):
-    #     print(f"Index i = {i}, Entry #{i + 1}")
-    #     print(f"{entry}")
-    # print(f"\n📊 Total valid entries: {len(entries)}\n")
-
-    # print(f"\n📦 Entry #{i + 1} (index i = {i})\n{entry}\n")
+    debug(entry, task, uid, i, entries)
     pause()
     return tasks
     

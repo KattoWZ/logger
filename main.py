@@ -46,9 +46,9 @@ def main():
                 action() #Call the corresponding function!
             else:
                 print("Invalid option. Please enter the correct options.")
+            print("hello")
         except rm:
             continue
-        
         except KeyboardInterrupt:
             print("\n Exit program, exited by user. No changes made.")
             break
