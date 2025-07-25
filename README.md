@@ -1,6 +1,11 @@
 # Logger System
 
 ## Logs
+v1.2.4
+- Add open edit feature
+- open & edit feature is using existing text editor tools such as Nano and Micro
+- in feature gedit will be added
+
 v1.1.4
 - Add debug file for debuging
 - 
