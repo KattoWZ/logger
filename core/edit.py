@@ -1,4 +1,4 @@
-from config import log_dir,ri
+from config import LOG_DIR,ri
 from pathlib import Path
 from utils.titleUI import print_title as pt
 import subprocess

@@ -2,7 +2,7 @@ from pathlib import Path
 import re
 import openpyxl
 from openpyxl.styles import Alignment
-from config import log_dir
+from config import LOG_DIR
 from utils.inputValidator import reqInput as ri
 
 def export_to_excel():

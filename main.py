@@ -1,22 +1,22 @@
-from core.create import create_log as cr
-from core.update import update_log as up
+from core.create import json_create as jc
+from core.update import json_update as ju
 from core.lists import list_log as ll
 from core.delete import delete as dl
 from core.quit  import quit_program as qp
 from core.export2excell import export_to_excel as ex
 from core.edit import edit_log as ed
-from core.entryList import list_entries as le
+from core.entryListJSON import list_entries as le
 from utils.uxHelper import clear_screen as clss
-from config import log_dir, ri, pt, datetime, rm
+from config import LOG_DIR, JSON_DIR, ri, pt, datetime, rm
 from pathlib import Path
 import time
 
 def main():
-    # os.makedirs(log_dir, exist_ok=True)
-    Path(log_dir).mkdir(parents=True, exist_ok=True)
+    Path(LOG_DIR).mkdir(parents=True, exist_ok=True)
+    Path(JSON_DIR).mkdir(parents=True, exist_ok=True)
     menu_actions = {
-        "n" : cr,
-        "u" : up,
+        "n" : jc,
+        "u" : ju,
         "l" : ll,
         "q" : qp,
         "x" : ex,

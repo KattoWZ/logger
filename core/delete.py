@@ -1,4 +1,4 @@
-from config import  log_dir, ri, pt
+from config import  LOG_DIR, ri, pt
 from pathlib import Path
 
 #Delete Program

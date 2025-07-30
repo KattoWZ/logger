@@ -1,33 +1,42 @@
-from config import  log_dir, ri, pt,lt,datetime,rm
+from core.convert import converter_title as ct
+from config import LOG_DIR, JSON_DIR, ri,pt,lt, datetime, rm
 from pathlib import Path
 import os
+import json
 
-#creating a log file
-def create_log():
+def json_create():
     pt("Create Log")
     while True:
         print("Insert '!' to return to main menu")            
-        doc = ri("Input file name to generate (without .txt): ").lower()
-        filepath = log_dir / f"{doc}.txt"
+        filename = ri("Input file name to generate (without .txt): ").lower()
+        json_path = JSON_DIR / f"{filename}.json"
 
-        if filepath.exists(): #change this to use pathlib later
-            print("The log file is already exists, Try a different name.")
+        if json_path.exists(): #change this to use pathlib later
+            print("The file is already exists, Try a different name.")
         else:
             break #no same file name, proceed to create new file
        
-    name = ri("Input name for HEADER: ")
-    author = ri("Input the author name: ")
+    title = ri("Input title for HEADER: ").upper()
+    author = ri("Input the author name: ").upper()
     timestamp = datetime.now().replace(microsecond=0)
 
-    log_entry = (
-        lt(f"{name.upper()} LOGS") + "\n" +
-        f"[Date of Creation] : {timestamp}\n"
-        f"[Author] : {author.upper()}\n"
-        f"\n>>> LOG ENTRY <<<\n"
-        
-    )
 
-    with open(filepath,"a") as file:
-        file.write(log_entry)
-        print(f"\n '{doc}.txt' file sucessfully created in '{log_dir}/{doc}.txt'")
-#EOL create file log
+    json_entry = [
+        {
+            "Title" : title,
+            "Time of Creation" : f"{timestamp}",
+            "Author" : author,
+            "Content" : []
+        }
+    ]
+    
+    with open(json_path,"w") as file:
+        json.dump(json_entry, file, indent=4)
+        # print(f"\n '{doc}.txt' file sucessfully created in '{log_dir}/{doc}.txt'")
+
+    #Convert to txt
+    raw_text = ct(json_path)
+    raw_path = LOG_DIR / f"{filename}.log"
+    with open(raw_path, 'w', encoding='utf-8') as file:
+        file.write(raw_text)
+#EOL create file lo
