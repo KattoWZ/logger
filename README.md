@@ -1,6 +1,12 @@
 # Logger System
 
 ## Logs
+v1.3.4-Experiment
+- Reworking the structure of the program
+- Add convert to raw text
+- changes the extension file into .log for more easier classification
+- N.B. delete function is not working for now, will be done tomorrow
+
 v1.2.4
 - Add open edit feature
 - open & edit feature is using existing text editor tools such as Nano and Micro
