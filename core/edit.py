@@ -1,6 +1,6 @@
 from utils.completer import enable_autocomplete
 from config import JSON_DIR, ri, pt, rm, LOG_DIR
-from core.convert import converter_entry as ce
+from core.convert import converter_entry as ce, converter_title as ct, convert
 from utils.uxHelper import pause_and_clear as pcl, clear_screen as clss
 from pathlib import Path
 import json
@@ -31,7 +31,7 @@ def edit_entries():
         print(f"Detail   : {detail}")
         print("-" * 40)
 
-    choice = int(input("\nWhich task number do you want to edit? "))-1
+    choice = int(input("\nWhich task number do you want to edit? "))-1 #-1 is because index start with 0, not 1
     edit_entry = data[0]["Content"][choice]
 
     edit_entry['Task'] = input(f"New Task (current: {edit_entry['Task']}): ") or edit_entry['Task']
@@ -40,13 +40,9 @@ def edit_entries():
     with open(json_path, 'w') as f:
         json.dump(data, f, indent=4)
 
-    raw_text = ce(json_path)
+    #convert everything back to .log
     raw_path = LOG_DIR / f"{filename}.log"
     raw_path.chmod(0o666) #unlock the file to be writeable
-    with open(raw_path, 'w', encoding='utf-8') as file:
-        file.write(raw_text)
+    convert(json_path, raw_path)
     raw_path.chmod(0o444) #re-lock the file to be read-only
-    
     print("\n✅ Task updated!")
-    
-    

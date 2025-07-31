@@ -62,22 +62,26 @@ def converter_entry(json_path):
     except json.JSONDecodeError:
         return "[Error] Invalid JSON."
 
+def convert(json_path, raw_path):
+    #convert the header first        
+    header = converter_title(json_path)
+    with open(raw_path, 'w', encoding='utf-8') as file:
+        file.write(header)
+
+    #convert the entries after
+    entries = converter_entry(json_path)
+    with open(raw_path, 'a') as f:
+        f.write(entries) 
+
 def convert_whole():
     ea()
     filename = ri("Input the file to convert to .log from .json: ").strip().lower()
     json_path = JSON_DIR / f"{filename}.json"
     raw_path = LOG_DIR / f"{filename}.log"
     #convert the header first        
-    header = converter_title(json_path)
-    with open(raw_path, 'w', encoding='utf-8') as file:
-        file.write(header)
-    raw_path.chmod(0o444)
-
-    #convert the entries after
-    entries = converter_entry(json_path)
-    raw_path.chmod(0o666)
-    with open(raw_path, 'a') as f:
-        f.write(entries) 
+    convert(json_path, raw_path) 
     raw_path.chmod(0o444)
     #NB: this method is messy,i know, but it's much
     # better than rewrite all the logic for the convert here
+
+    
