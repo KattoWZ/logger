@@ -1,10 +1,16 @@
 # Logger System
 
 ## Logs
+v1.3.5-Experiment
+- "Delete file" feature is working
+- change the .log file into read-only to prevent user from messing with the file
+  outside of the tools, to ensure file integrity
+- Add converter feature to convert .json to .log manually
+
 v1.3.4-Experiment
 - Reworking the structure of the program
 - Add convert to raw text
-- changes the extension file into .log for more easier classification
+- change the extension file into .log for more easier classification
 - N.B. delete function is not working for now, will be done tomorrow
 
 v1.2.4

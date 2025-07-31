@@ -21,7 +21,7 @@ def json_update():
         psc()
         return
     print(f"Log file '{filename}.log' found! Now updating..")
-    
+
     with open(json_path,"r") as file:
         data = json.load(file)
 
@@ -83,9 +83,10 @@ def json_update():
             filename = filename[:-5] + ".log"
         raw_text = ce(json_path)
         raw_path = LOG_DIR / f"{filename}"
+        raw_path.chmod(0o666) #unlock the file to be writeable
         with open(raw_path, 'a', encoding='utf-8') as file:
             file.write(raw_text)
-    
+        raw_path.chmod(0o444) #re-lock the file to be read-only
         print(f"\n Log file updated")
         again = input("\n Do you want to add another log entry? (Y/N): ").strip().lower()
         if again != "y":

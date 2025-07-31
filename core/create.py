@@ -39,4 +39,5 @@ def json_create():
     raw_path = LOG_DIR / f"{filename}.log"
     with open(raw_path, 'w', encoding='utf-8') as file:
         file.write(raw_text)
+    raw_path.chmod(0o444) #lock the .log file to be read-only
 #EOL create file lo
