@@ -1,6 +1,10 @@
 # Logger System
 
 ## Logs
+v1.3.2-Experiment
+- refactor: changed some function name 
+- style: changing the style of how .log is written (convert.py)
+
 v1.3.1-Experiment
 - changed the versioning
 - "Delete file" feature is working
