@@ -2,7 +2,7 @@ from config import LOG_DIR, JSON_DIR, ri,pt,lt, datetime, rm
 from core.convert import converter_entry as ce
 from utils.completer import enable_autocomplete
 from utils.uxHelper import clear_screen as clss
-from utils.progress_status import status, progress
+from utils.progress_status import get_status, get_progress
 from pathlib import Path
 import os
 import json
@@ -30,9 +30,10 @@ def json_update():
         #Creating or adding new log entry
         pt("Adding log entry")
         task = ri("Input task: ")
-        stats = status()
-        print(stats)
-        prog = progress(status)
+        status = get_status()
+        print(status)
+        progress = get_progress(status)
+        print(progress)
         detail = input("Input the detail(optional): ")
         timestamp = datetime.now().replace(microsecond=0)
         
@@ -41,8 +42,8 @@ def json_update():
                 "UUID" : str(uuid.uuid4()),
                 "Date and Time" : f"{timestamp}",
                 "Task" : task,
-                "Status" : stats,
-                "Progress" : prog,
+                "Status" : status,
+                "Progress" : progress,
                 "Detail" : detail
             }
         data[0]["Content"].append(json_entry)
@@ -56,7 +57,7 @@ def json_update():
         raw_text = ce(json_path)
         raw_path = LOG_DIR / f"{filename}"
         raw_path.chmod(0o666) #unlock the file to be writeable
-        with open(raw_path, 'a', encoding='utf-8') as file:
+        with open(raw_path, "a") as file:
             file.write(raw_text)
         raw_path.chmod(0o444) #re-lock the file to be read-only
         print(f"\n Log file updated")

@@ -1,31 +1,30 @@
 from config import ri
 
-def status():
+def get_status():
     status = ri("Input Status (O:On Progress, F: Finish, P: Plan, C: Canceled): ").strip().lower()
     if status == "o":
-        status_text = "On Progress"
+        return "On Progress"
     elif status == "f":
-        status_text = "Finish"
+        return "Finish"
     elif status == "p":
-        status_text = "Plan"
+        return "Plan"
     elif status == "c":
-        status_text = "Canceled"
+        return "Canceled"
     else:
-        status_text = "Unknown"
+        return "Unknown"
         print("!!!! Invalid status input, Defaulting to Unknown, update the status ASAP!")
 
-    return status
 
-def progress(status):
-    if status == "o":
+def get_progress(param_status):
+    if param_status == "On Progress":
         progress = ri("Progress: ")
         if not progress.endswith("%"):
             progress += "%"
-    elif status == "f":
+    elif param_status == "Finish":
         progress = "100%"
-    elif status == "p":
+    elif param_status == "Plan":
         progress = "0%"
-    elif status == "c":
+    elif param_status == "Canceled":
         progress = "Canceled"
     else:
         progress = "-"
@@ -43,3 +42,4 @@ def progress(status):
     else:
         progress_bar = f"[{progress}]"
     
+    return progress_bar
