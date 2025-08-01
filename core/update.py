@@ -2,6 +2,7 @@ from config import LOG_DIR, JSON_DIR, ri,pt,lt, datetime, rm
 from core.convert import converter_entry as ce
 from utils.completer import enable_autocomplete
 from utils.uxHelper import clear_screen as clss
+from utils.progress_status import status, progress
 from pathlib import Path
 import os
 import json
@@ -29,38 +30,9 @@ def json_update():
         #Creating or adding new log entry
         pt("Adding log entry")
         task = ri("Input task: ")
-        status = ri("Input Status (O:On Progress, F: Finish, P: Plan, C: Canceled): ").strip().lower()
-        progress = "-"
-        if status == "o":
-            status_text = "On Progress"
-            progress = ri("Progress: ")
-            if not progress.endswith("%"): #Check if the % is present or typed by the user or not
-                progress += "%"
-        elif status == "f":
-            status_text = "Finish"
-            progress = "100%"
-        elif status == "p":
-            status_text = "Plan"
-            progress = "0%"
-        elif status == "c":
-            status_text = "Canceled"
-            progress = "Canceled"
-        else:
-            status_text = "Unknown"
-            progress = "-"
-            print("!!!! Invalid status input, Defaulting to Unknown, update the status ASAP!")
-    
-    
-        if progress.endswith("%"):
-            # try:
-            #Remove the %, and then calculate it for the bar, and re-add the %, the % on previous prompt is act as a flag for this
-            percent_value = int(progress.strip('%'))
-            filled_blocks = percent_value // 10
-            empty_block = 10 - filled_blocks
-            bar = "█" * filled_blocks + "." * empty_block
-            progress_bar = f"[{bar}] {percent_value}%"
-        else:
-            progress_bar = f"[{progress}]"
+        stats = status()
+        print(stats)
+        prog = progress(status)
         detail = input("Input the detail(optional): ")
         timestamp = datetime.now().replace(microsecond=0)
         
@@ -69,8 +41,8 @@ def json_update():
                 "UUID" : str(uuid.uuid4()),
                 "Date and Time" : f"{timestamp}",
                 "Task" : task,
-                "Status" : status_text,
-                "Progress" : progress_bar,
+                "Status" : stats,
+                "Progress" : prog,
                 "Detail" : detail
             }
         data[0]["Content"].append(json_entry)
