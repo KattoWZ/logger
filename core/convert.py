@@ -12,9 +12,9 @@ def converter_title(json_path):
         author = data[0].get("Author", "Unknown") 
 
         raw_text = (
-            f"<Title> : {title}\n"
+            f"<Title>            : {title}\n"
             f"<Time of Creation> : {time}\n"
-            f"<Author> : {author}\n\n"
+            f"<Author>           : {author}\n\n"
             ">>> Begin Log <<<\n\n"
             
         )
@@ -27,6 +27,8 @@ def converter_title(json_path):
         return "[Error] File not found."
     except json.JSONDecodeError:
         return "[Error] Invalid JSON."
+
+# This one is to convert entry for 'update'
 def converter_entry(json_path):
     try:
         with open(json_path, 'r', encoding='utf-8') as file:
@@ -41,13 +43,13 @@ def converter_entry(json_path):
             status = entry.get("Status", "Unknown")
             progress = entry.get("Progress", "-")
             detail = entry.get("Detail", "")
-            raw_text += (
-                f"[UUID] : {uuid}\n"
+            raw_text = (
+                f"[UUID]          : {uuid}\n"
                 f"[Date and Time] : {clock}\n"
-                f"[Task] : {task}\n"
-                f"[Status] : {status}\n"
-                f"[Progress] : {progress}\n"
-                f"[Detail] : {detail}\n"
+                f"[Task]          : {task}\n"
+                f"[Status]        : {status}\n"
+                f"[Progress]      : {progress}\n"
+                f"[Detail]        : {detail}\n"
                 "-------------------------\n"
             )
         # raw_text = f"UUID: {uuid}\nClock: {clock}\nTags: {tags}\nJournal: {journal}"
@@ -62,6 +64,39 @@ def converter_entry(json_path):
     except json.JSONDecodeError:
         return "[Error] Invalid JSON."
 
+# This part is to convert "whole" .Json, can't be used for updating since it will double append the entry
+def converter_entry_whole(json_path):
+    try:
+        with open(json_path, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+
+        raw_text = ""
+        for entry in data[0]["Content"]:
+            # print("running")
+            uuid = entry.get("UUID", "Unknown")
+            clock = entry.get("Date and Time", "Unknown")
+            task = entry.get("Task", "Unknown")
+            status = entry.get("Status", "Unknown")
+            progress = entry.get("Progress", "-")
+            detail = entry.get("Detail", "")
+            raw_text += (
+                f"[UUID]          : {uuid}\n"
+                f"[Date and Time] : {clock}\n"
+                f"[Task]          : {task}\n"
+                f"[Status]        : {status}\n"
+                f"[Progress]      : {progress}\n"
+                f"[Detail]        : {detail}\n"
+                "-------------------------\n"
+            )
+        return raw_text
+        
+    except FileNotFoundError:
+        return "[Error] File not found."
+    except json.JSONDecodeError:
+        return "[Error] Invalid JSON."
+
+
+#Both of these are special for converting .json to .log manually
 def convert(json_path, raw_path):
     #convert the header first        
     header = converter_title(json_path)
@@ -69,7 +104,7 @@ def convert(json_path, raw_path):
         file.write(header)
 
     #convert the entries after
-    entries = converter_entry(json_path)
+    entries = converter_entry_whole(json_path)
     with open(raw_path, 'a') as f:
         f.write(entries) 
 
