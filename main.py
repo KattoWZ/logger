@@ -14,6 +14,7 @@ from pathlib import Path
 import time
 
 def main():
+    clss()
     Path(LOG_DIR).mkdir(parents=True, exist_ok=True)
     Path(JSON_DIR).mkdir(parents=True, exist_ok=True)
     menu_actions = {
