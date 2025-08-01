@@ -22,11 +22,13 @@ def edit_entries():
         
         
         task = entry.get("Task", "Unknown")
+        status = entry.get("Status", "")
         progress = entry.get("Progress", "-")
         detail = entry.get("Detail", "")
                    
         print(f"[entry number {i}]")        
         print(f"Task     : {task}")
+        print(f"Status   : {status}")
         print(f"Progress : {progress}")
         print(f"Detail   : {detail}")
         print("-" * 40)
@@ -35,6 +37,8 @@ def edit_entries():
     edit_entry = data[0]["Content"][choice]
 
     edit_entry['Task'] = input(f"New Task (current: {edit_entry['Task']}): ") or edit_entry['Task']
+    edit_entry['Status'] = input(f"New Detail (current: {edit_entry['Status']}): ") or edit_entry['Status']
+    edit_entry['Progress'] = input(f"New Detail (current: {edit_entry['Detail']}): ") or edit_entry['Detail']
     edit_entry['Detail'] = input(f"New Detail (current: {edit_entry['Detail']}): ") or edit_entry['Detail']
 
     with open(json_path, 'w') as f:
