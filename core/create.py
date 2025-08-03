@@ -8,7 +8,7 @@ def json_create():
     pt("Create Log")
     while True:
         print("Insert '!' to return to main menu")            
-        filename = ri("Input file name to generate (without .txt): ").lower()
+        filename = ri("Input file name to generate (without .log): ").lower()
         json_path = JSON_DIR / f"{filename}.json"
 
         if json_path.exists(): #change this to use pathlib later
