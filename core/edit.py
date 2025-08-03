@@ -36,17 +36,24 @@ def edit_entries():
 
     choice = int(input("\nWhich task number do you want to edit? "))-1 #-1 is because index start with 0, not 1
     edit_entry = data[0]["Content"][choice]
-
+    # TODO : make the edit as an option, what field the user want's to edit
     edit_entry['Task'] = input(f"New Task (current: {edit_entry['Task']}): ") or edit_entry['Task']
+    print(f"New Task: {edit_entry['Task']}")
+
     print(f"Current Status: {edit_entry['Status']}")
     edit_entry['Status'] = get_status_optional() or edit_entry['Status']
+    print(f"New Status: {edit_entry['Status']}")
+
     print(f"Current Progress: {edit_entry['Progress']}")
-    edit_entry['Progress'] = get_progress_optional(edit_entry['Status']) or edit_entry['Progress']
+    edit_entry['Progress'] = get_progress_optional(edit_entry['Status'], edit_entry['Progress'])
+    print(f"New Progress: {edit_entry['Progress']}")
+
     edit_entry['Detail'] = input(f"New Detail (current: {edit_entry['Detail']}): ") or edit_entry['Detail']
+    
 
     with open(json_path, 'w') as f:
         json.dump(data, f, indent=4)
-    
+
     #convert everything back to .log
     raw_path = LOG_DIR / f"{filename}.log"
     raw_path.chmod(0o666) #unlock the file to be writeable

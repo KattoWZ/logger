@@ -1,6 +1,10 @@
 # Logger System
 
 ## Logs
+v1.3.3-Experiment
+- edit feature now can edit progress and status (status need some works)
+- TODO : make "options" of what field the user want's to edit, to fix the edit status
+
 v1.3.2-Experiment
 - refactor: changed some function name 
 - style: changing the style of how .log is written (convert.py)

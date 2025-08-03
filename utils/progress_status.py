@@ -1,4 +1,5 @@
 from config import ri
+import re
 
 # function to get status
 def get_status():
@@ -61,7 +62,7 @@ def get_status_optional():
         print("!!!! Invalid status input, Defaulting to Unknown, update the status ASAP!")
 
 # get progress without restriction to blank input
-def get_progress_optional(param_status):
+def get_progress_optional(param_status, current_progress):
     if param_status == "On Progress":
         progress = input("Progress: ")
         if not progress.endswith("%"):
@@ -74,6 +75,13 @@ def get_progress_optional(param_status):
         progress = "Canceled"
     else:
         progress = "-"
+
+    if progress == "":  
+        match = re.search(r"(\d+%)", current_progress)
+        percent = match.group(1) if match else "0%"
+        progress = percent
+    else:
+        progress = progress
 
     if progress.endswith("%"):
         try:
