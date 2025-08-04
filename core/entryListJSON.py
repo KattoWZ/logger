@@ -21,6 +21,7 @@ def list_entries():
         uuid = entry.get("UUID", "Unknown")
         clock = entry.get("Date and Time", "Unknown")
         task = entry.get("Task", "Unknown")
+        status = entry.get("Status", "Unknown")
         progress = entry.get("Progress", "-")
         detail = entry.get("Detail", "")
             
@@ -28,6 +29,7 @@ def list_entries():
         print(f"UUID     : {uuid}")
         print(f"Time     : {clock}")
         print(f"Task     : {task}")
+        print(f"Status   : {status}")
         print(f"Progress : {progress}")
         print(f"Detail   : {detail}")
         print("-" * 40)
