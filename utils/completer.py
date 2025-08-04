@@ -7,6 +7,9 @@ def completer(text, state):
         return files[state]
     return None
 
+
 def enable_autocomplete():
     readline.set_completer(completer)
     readline.parse_and_bind("tab: complete")
+
+    

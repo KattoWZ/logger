@@ -42,7 +42,7 @@ def get_progress(param_status):
         except ValueError:
             progress_bar = "invalid"
     else:
-        progress_bar = f"[{progress}]"
+        progress_bar = f"{progress}"
     
     return progress_bar
 
@@ -94,6 +94,6 @@ def get_progress_optional(param_status, current_progress):
         except ValueError:
             progress_bar = "invalid"
     else:
-        progress_bar = f"[{progress}]"
+        progress_bar = f"{progress}"
     
     return progress_bar

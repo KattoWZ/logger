@@ -3,6 +3,7 @@ from core.convert import converter_entry as ce
 from utils.completer import enable_autocomplete
 from utils.uxHelper import clear_screen as clss
 from utils.progress_status import get_status, get_progress
+from utils.task_lists import load_tasks, get_task_with_autocomplete
 from pathlib import Path
 import os
 import json
@@ -17,9 +18,9 @@ def json_update():
 
     #Check if the file is exist or not, returning to main menu when not found
     if not json_path.exists():
+        clss()
         print(f"Log file '{filename}.log' not found !!")
         print("Please create the log file first")
-        psc()
         return
     print(f"Log file '{filename}.log' found! Now updating..")
 
@@ -29,7 +30,8 @@ def json_update():
     while True:
         #Creating or adding new log entry
         pt("Adding log entry")
-        task = ri("Input task: ")
+        task_list=load_tasks(json_path)
+        task = get_task_with_autocomplete(task_list)
         status = get_status()
         print(status)
         progress = get_progress(status)
