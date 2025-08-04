@@ -1,4 +1,4 @@
-from utils.inputValidator import reqInput as ri, ReturnToMenu as rm
+from utils.inputValidator import fancy_reqInput as fri, reqInput as ri, ReturnToMenu as rm
 from utils.titleUI import print_title as pt, logTitle as lt
 from datetime import datetime
 from pathlib import Path
