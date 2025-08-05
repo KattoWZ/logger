@@ -37,7 +37,7 @@ def edit_entries():
     
         choice = int(ri("\nWhich task number do you want to edit? "))-1 #-1 is because index start with 0, not 1
         edit_entry = data[0]["Content"][choice]
-        # TODO : make the edit as an option, what field the user want's to edit
+        
         while True:
             task = edit_entry.get("Task", "Unknown")
             status = edit_entry.get("Status", "")

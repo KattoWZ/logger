@@ -1,6 +1,8 @@
 # Logger System
 
 ## Logs
+v1.3.5
+- 
 v1.3.4-Experiment
 - Edit feature is now fully functional
 - options of what field the user want's to edit is not implemented
