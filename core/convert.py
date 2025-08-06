@@ -1,4 +1,5 @@
-from utils.completer import enable_autocomplete as ea
+# from utils.completer import enable_autocomplete as ea
+from utils.inputValidator import input_filename
 from config import LOG_DIR, JSON_DIR,ri
 import json
 
@@ -109,8 +110,8 @@ def convert(json_path, raw_path):
         f.write(entries) 
 
 def convert_whole():
-    ea()
-    filename = ri("Input the file to convert to .log from .json: ").strip().lower()
+    # ea()
+    filename = input_filename("Input the file to convert to .log from .json: ",JSON_DIR).strip().lower()
     json_path = JSON_DIR / f"{filename}.json"
     raw_path = LOG_DIR / f"{filename}.log"
     #convert the header first        
