@@ -1,4 +1,5 @@
 from config import LOG_DIR, JSON_DIR, ri,pt,lt, datetime, rm
+from utils.inputValidator import input_filename
 from core.convert import converter_entry as ce
 from utils.completer import enable_autocomplete
 from utils.uxHelper import clear_screen as clss
@@ -11,8 +12,9 @@ import readline
 import uuid
 
 def json_update():
-    enable_autocomplete()
-    input_name = ri("Input log name: ").strip().lower()
+    # enable_autocomplete()
+    input_name = input_filename("Input log name: ",JSON_DIR)
+    # input_name = ri("Input log name: ").strip().lower()
     filename = f"{input_name}.json"
     json_path = JSON_DIR / f"{filename}"
 
