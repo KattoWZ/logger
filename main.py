@@ -10,6 +10,7 @@ from core.edit import edit_entries as ee
 from core.convert import convert_whole as cw
 from utils.uxHelper import clear_screen as clss
 from config import LOG_DIR, JSON_DIR, ri, pt, datetime, rm
+from utils.inputValidator import input_menu
 from pathlib import Path
 import time
 
@@ -17,24 +18,37 @@ def main():
     clss()
     Path(LOG_DIR).mkdir(parents=True, exist_ok=True)
     Path(JSON_DIR).mkdir(parents=True, exist_ok=True)
-    menu_actions = {
+    #menu actions dictionary
+    MENU_ACTIONS = {
         "n" : jc,
+        "new" : jc,
         "u" : ju,
+        "update" : ju,
         "e" : ee,
+        "edit" : ee,
         "l" : ll,
+        "list log" : ll,
         "q" : qp,
+        "quit" : qp,
         "x" : ex,
+        "export to excell" : ex,
         "d" : dl,
+        "delete" : dl,
         "r" : rd,
+        "read" :rd,
         "le": le,
-        "cw" : cw
+        "list entries" : le,
+        "cw" : cw,
+        "convert json to log" :cw,
+        "!" : rm
     }
         
     while True:
         try:
             pt("LOG SYSTEM by KattoWilkatz")
             print(" "*10 +  "MAIN MENU")
-            print("Insert '!' to return to main menu")            
+            print("Insert '!' to return to main menu")
+            print("Type the option below or press 'Tab' to show the dropdown option")            
             print("\n (N) Create New Log")
             print(" (U) Update Exisiting Log")
             print(" (R) Read Exisiting Log")
@@ -46,14 +60,27 @@ def main():
             print(" (LE) lists entries")
             print(" (CW) Convert JSON to log")
         
-            choice = input("> ").strip().lower()
-            action = menu_actions.get(choice)
+            VISIBLE_OPTIONS=[
+                "new",
+                "update",
+                "edit",
+                "delete",
+                "list log",
+                "list entries",
+                "quit",
+                "read",
+                "export to excell",
+                "convert json to log"
+            ]
+            
+            choice = input_menu("> ", valid_keys=MENU_ACTIONS, visible_choices=VISIBLE_OPTIONS).strip().lower()
+            action = MENU_ACTIONS.get(choice)
         
             if action:
                 action() #Call the corresponding function!
-            else:
-                clss()
-                print(f"'{choice}' is an Invalid option. Please enter the correct options.")
+            # else:
+            #     clss()
+            #     print(f"'{choice}' is an Invalid option. Please enter the correct options.")
             # print("hello")
         except rm:
             continue

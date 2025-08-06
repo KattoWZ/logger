@@ -94,7 +94,9 @@ def input_status(message, allow_return=True):
             if text == "!":
                 return            
             if not text:
-                raise ValidationError(message="Status can't be empty!", cursor_position=0)
+                raise ValidationError(message="Can't be empty !", cursor_position=0)
+            if text not in STATUS_OPTION:
+                raise ValidationError(message=f"'{text}' is not an option", cursor_position=0)
 
     status = session.prompt(
         message,
@@ -108,4 +110,62 @@ def input_status(message, allow_return=True):
         print("\nReturning to main menu...")
         raise ReturnToMenu()
 
-    return status    
+    return status
+
+#for main menu option
+
+def Xinput_menu(message,choices=None, allow_return=True):
+    choices= choices or []
+    completer = WordCompleter(choices, ignore_case=True)
+    session = PromptSession()
+
+    class MenuValidator(Validator):
+        def validate(self, document):
+            text = document.text.strip()
+            if text == "!":
+                return            
+            if not text:
+                raise ValidationError(message="Can't be empty!", cursor_position=0)
+            if text not in choices:
+                raise ValidationError(message=f"'{text}' is INVALID option", cursor_position=0)
+
+    menu = session.prompt(
+        message,
+        completer=completer,
+        validator=MenuValidator(),
+        validate_while_typing=False
+    ).strip()
+
+    if allow_return and menu == "!":
+        clss()
+        print("\nReturning to main menu...")
+        raise ReturnToMenu()
+
+    return menu
+
+def input_menu(message, valid_keys: dict, visible_choices=None, allow_return=True):
+    # Only show the "long" commands in the autocomplete
+    visible_choices = visible_choices or list(set(valid_keys) - {k for k in valid_keys if len(k) <= 2})
+    completer = WordCompleter(visible_choices, ignore_case=True)
+
+    class MenuValidator(Validator):
+        def validate(self, document):
+            text = document.text.strip().lower()
+            if not text:
+                raise ValidationError(message="Input cannot be empty.", cursor_position=0)
+            if text not in valid_keys:
+                raise ValidationError(message="Invalid option. Try again.", cursor_position=0)
+
+    session = PromptSession()
+    menu = session.prompt(
+        message,
+        completer=completer,
+        validator=MenuValidator(),
+        validate_while_typing=False
+    ).strip()
+
+    if allow_return and menu == "!":
+        clss()
+        print("\nReturning to main menu...")
+        raise ReturnToMenu()
+    return menu
