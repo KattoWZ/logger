@@ -4,6 +4,7 @@
 v1.3.5
 - Refactor: input status and progress now use prompt_toolkit
 - Refactor: convert from json to log, input filename using prompt_toolkit
+- Refactor: input function on main menu has been reworked
 - TODO :
 	- refactor input validator in delete, list log, and list entries
 v1.3.4-Experiment
