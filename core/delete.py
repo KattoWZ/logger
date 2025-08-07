@@ -1,5 +1,5 @@
 from config import  LOG_DIR, ri, pt, JSON_DIR
-from utils.completer import enable_autocomplete
+from utils.inputValidator import input_filename
 from utils.uxHelper import clear_screen as clss
 from pathlib import Path
 
@@ -7,8 +7,7 @@ from pathlib import Path
 def delete():
     print("Insert '!' to return to main menu")            
     pt("Purge the FILE")
-    enable_autocomplete()
-    filename = ri("Insert the name of the file to be removed: ").strip().lower()
+    filename = input_filename("Insert the name of the file to be removed: ", JSON_DIR).strip().lower()
     file_path = LOG_DIR / f"{filename}.log"
     json_path = JSON_DIR / f"{filename}.json"
     if file_path.exists() and json_path.exists():
