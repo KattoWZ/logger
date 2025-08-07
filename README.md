@@ -1,12 +1,15 @@
 # Logger System
 
 ## Logs
+v1.3.6
+- "delete" now use prompt_toolkit for input filename
+- "list entries" now use prompt_toolkit
 v1.3.5
 - Refactor: input status and progress now use prompt_toolkit
 - Refactor: convert from json to log, input filename using prompt_toolkit
 - Refactor: input function on main menu has been reworked
 - TODO :
-	- refactor input validator in delete, list log, and list entries
+	- refactor input validator in delete and list entries
 v1.3.4-Experiment
 - Edit feature is now fully functional
 - options of what field the user want's to edit is not implemented
