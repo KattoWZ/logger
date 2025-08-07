@@ -4,6 +4,7 @@
 v1.3.6
 - "delete" now use prompt_toolkit for input filename
 - "list entries" now use prompt_toolkit
+- 
 v1.3.5
 - Refactor: input status and progress now use prompt_toolkit
 - Refactor: convert from json to log, input filename using prompt_toolkit
