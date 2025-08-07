@@ -1,5 +1,5 @@
 from utils.inputValidator import reqInput as ri, ReturnToMenu as rm
-from utils.titleUI import print_title as pt
+from utils.titleUI import print_title as pt, logTitle as lt
 from datetime import datetime
 from pathlib import Path
 import os
@@ -16,7 +16,10 @@ def find_project_root(marker="main.py"):
 BASE_DIR = find_project_root()
 
 #Define logs dir
-log_dir = BASE_DIR / "logs"
+LOG_DIR = BASE_DIR / "logs"
+
+#Define json dir
+JSON_DIR = BASE_DIR / "json"
 
 #Define utils dir
 utils_dir = BASE_DIR / "utils"

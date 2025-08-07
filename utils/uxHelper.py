@@ -1,9 +1,12 @@
-import os
-
+import platform
+import subprocess
+import shutil
 #simple funtion to clear the screen
 def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
+    clear_cmd = shutil.which("clear")
+    if clear_cmd:
+        subprocess.run([clear_cmd])
+        
 #pause before moving the screen
 def pause(msg="Press 'Enter' to continue..."):
     input(msg)
