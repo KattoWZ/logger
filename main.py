@@ -61,16 +61,16 @@ def main():
             print(" (CW) Convert JSON to log")
         
             VISIBLE_OPTIONS=[
-                "new",
-                "update",
-                "edit",
-                "delete",
-                "list log",
-                "list entries",
-                "quit",
-                "read",
-                "export to excell",
-                "convert json to log"
+                "New",
+                "Update",
+                "Edit",
+                "Delete",
+                "List log",
+                "List entries",
+                "Quit",
+                "Export to excell",
+                "Convert json to log",
+                "!"
             ]
             
             choice = input_menu("> ", valid_keys=MENU_ACTIONS, visible_choices=VISIBLE_OPTIONS).strip().lower()

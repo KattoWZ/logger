@@ -1,4 +1,3 @@
-import time
 from utils.uxHelper import clear_screen as clss
 from pathlib import Path
 from prompt_toolkit import prompt, PromptSession
@@ -7,21 +6,8 @@ from prompt_toolkit.validation import Validator, ValidationError
 
 class ReturnToMenu(Exception):
     pass
-# def XreqInput(prompt):
-#     while True:
-#         value = input(prompt).strip()
-#         if value == "!":
-#             print("Returning to main menu.\n")
-#             time.sleep(0.5)
-#             clss()
-#             raise ReturnToMenu
-#         if value:
-#             return value
-#         else:
-#             print("!!!! This Field is REQUIRED. Please try again.")
-
 #for general usage
-def reqInput(message, choices=None, allow_return=True):
+def reqInput(message, choices="!", allow_return=True):
     session = PromptSession()
     completer = WordCompleter(choices, ignore_case=True) if choices else None
 
@@ -52,11 +38,10 @@ def reqInput(message, choices=None, allow_return=True):
     return text
 
 #for Inputing Filename
-
 def input_filename(message, path:Path, allow_return=True):
     session = PromptSession()
 
-    json_files = [f.stem for f in path.glob("*.json")]
+    json_files = [f.stem for f in path.glob("*.json")] + list("!")
     completer = WordCompleter(json_files, ignore_case=True)
 
     class FileNameValidator(Validator):
@@ -83,7 +68,7 @@ def input_filename(message, path:Path, allow_return=True):
     return filename
 
 #for Status
-STATUS_OPTION = ["On Progress", "Finish", "Plan", "Canceled"]
+STATUS_OPTION = ["On Progress", "Finish", "Plan", "Canceled","!"]
 def input_status(message, allow_return=True):
     completer = WordCompleter(STATUS_OPTION, ignore_case=True)
     session = PromptSession()
@@ -113,39 +98,9 @@ def input_status(message, allow_return=True):
     return status
 
 #for main menu option
-
-def Xinput_menu(message,choices=None, allow_return=True):
-    choices= choices or []
-    completer = WordCompleter(choices, ignore_case=True)
-    session = PromptSession()
-
-    class MenuValidator(Validator):
-        def validate(self, document):
-            text = document.text.strip()
-            if text == "!":
-                return            
-            if not text:
-                raise ValidationError(message="Can't be empty!", cursor_position=0)
-            if text not in choices:
-                raise ValidationError(message=f"'{text}' is INVALID option", cursor_position=0)
-
-    menu = session.prompt(
-        message,
-        completer=completer,
-        validator=MenuValidator(),
-        validate_while_typing=False
-    ).strip()
-
-    if allow_return and menu == "!":
-        clss()
-        print("\nReturning to main menu...")
-        raise ReturnToMenu()
-
-    return menu
-
 def input_menu(message, valid_keys: dict, visible_choices=None, allow_return=True):
     # Only show the "long" commands in the autocomplete
-    visible_choices = visible_choices or list(set(valid_keys) - {k for k in valid_keys if len(k) <= 2})
+    visible_choices = visible_choices or list(set(valid_keys) - {k for k in valid_keys if len(k) <= 2}) + list("!")
     completer = WordCompleter(visible_choices, ignore_case=True)
 
     class MenuValidator(Validator):
@@ -168,4 +123,5 @@ def input_menu(message, valid_keys: dict, visible_choices=None, allow_return=Tru
         clss()
         print("\nReturning to main menu...")
         raise ReturnToMenu()
+    
     return menu
