@@ -1,4 +1,3 @@
-from utils.completer import enable_autocomplete
 from config import JSON_DIR, ri, pt, rm, LOG_DIR
 from core.convert import converter_entry as ce, converter_title as ct, convert
 from utils.uxHelper import pause_and_clear as pcl, clear_screen as clss
@@ -8,7 +7,6 @@ import json
 import readline
 
 def edit_entries():
-    enable_autocomplete() #Autocomplete
     filename = ri("Input the file name: ").strip().lower()
     json_path = JSON_DIR / f"{filename}.json"
     with open(json_path, "r") as f:
